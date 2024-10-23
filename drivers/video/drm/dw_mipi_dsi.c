@@ -726,7 +726,7 @@ static ssize_t dw_mipi_dsi_transfer(struct dw_mipi_dsi *dsi,
 
 	if (msg->flags & MIPI_DSI_MSG_USE_LPM) {
 		dsi_update_bits(dsi, DSI_VID_MODE_CFG, LP_CMD_EN, LP_CMD_EN);
-		dsi_update_bits(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS, 0);
+		dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
 	} else {
 		dsi_update_bits(dsi, DSI_VID_MODE_CFG, LP_CMD_EN, 0);
 		dsi_update_bits(dsi, DSI_LPCLK_CTRL,
